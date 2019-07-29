@@ -1,7 +1,7 @@
 package lab3.iterator;
 
 public class NameRepository implements Aggregate {
-	private String names[][] = {{"-","Rob"}, {"-","Jon"}, {"-","Jul"}, {"-","Lor"}, {"-","Pat"}, {"-","Ken"}};
+	private String names[][] = {{"-","Rob"}, {"-","Jon"}, {"-","-"}, {"-","-"}, {"-","Pat"}, {"-","Ken"}};
 
 	@Override
 	public Iterator getIterator() {
@@ -27,11 +27,12 @@ public class NameRepository implements Aggregate {
 			// TODO Auto-generated method stub
 			if(this.hasNext())
 			{
-				return names[index++];
+				int idx = index++;
+				return "Firstname: " + names[idx][0] + " Lastname: " + names[idx][1];
 			}
 			
 			return null;
 		}
-		
+	
 	}
 }

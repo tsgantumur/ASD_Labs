@@ -2,8 +2,12 @@ package lab4.templateMethod;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class LetterPrinter {
+	protected List<String> dataList = new ArrayList<>();
+	protected SymmetryType type;
 	
 	public final void printLetter(String fl)
 	{
@@ -11,7 +15,7 @@ public abstract class LetterPrinter {
 		
 		getType();
 		
-		construct();
+		reconstruct();
 		
 		print();
 	}
@@ -24,9 +28,10 @@ public abstract class LetterPrinter {
 			
 			String line = reader.readLine();
 			while (line != null) {
-				System.out.println(line);
+				dataList.add(line);
 				// read next line
 				line = reader.readLine();
+				
 			}
 			reader.close();
 		} catch (IOException e) {
@@ -34,9 +39,9 @@ public abstract class LetterPrinter {
 		}
 	}
 	
-	public abstract String getType();
+	public abstract SymmetryType getType();
 	
-	public abstract void construct();
+	public abstract void reconstruct();
 	
 	public abstract void print();
 }

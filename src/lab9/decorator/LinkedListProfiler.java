@@ -17,11 +17,13 @@ public class LinkedListProfiler extends Profiler {
 	public boolean add(String s)
 	{
 		long startTime = startTime();
+		System.out.println(startTime);
 		
 		super.add(s);
 		boolean added = linkedListAdd(s);
 		
 		addElapsedTime = elapsedTime(startTime);
+		System.out.println(addElapsedTime);
 		
 		return added;
 	}

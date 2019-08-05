@@ -2,6 +2,8 @@ package lab11.visitor;
 
 public class DisplayNodeVisitor implements NodeVisitor {
 	private Root root;
+	private int nodeCount = 1;
+	
 	
 	@Override
 	public void visit(Root root) {
@@ -15,25 +17,36 @@ public class DisplayNodeVisitor implements NodeVisitor {
 	public void visit(Node node) {
 		// TODO Auto-generated method stub
 		
-		if(node.getSide() == Side.RIGHT)
+		for(int i = 0; i < node.getChildrenNum(); i++)
 		{
+			Node childNode = node.chilren().get(i);
 			
-			System.out.println("Right nodes:");
+ 			if(childNode.getChildrenNum() > 0)
+			{
+				nodeCount += node.chilren().get(i).getChildrenNum();
+				
+				childNode.accept(this);
+			} 
+ 			else
+ 			{
+ 				
+ 				if(node.getSide() == Side.RIGHT)
+ 				{
+ 					System.out.println("Right nodes:");
+ 					System.out.println(nodeCount + " " + node.getName() + " nodes");
+ 					nodeCount = 1;
+ 				}
+ 				else
+ 				{
+ 					System.out.println("Left nodes:");
+ 					System.out.println(nodeCount + " " + node.getName() + " nodes");
+ 					nodeCount = 1;
+ 				}
+ 				
+ 			}
 			
-			System.out.println(" " + node.getName() + " nodes");
-
 		}
-		else if(node.getSide() == Side.LEFT)
-		{
-			
-			System.out.println("Left nodes:");
-			
-			System.out.println(" " + node.getName() + " nodes");
-
-		}
-		
-		
-		
+	
 	}
 
 }

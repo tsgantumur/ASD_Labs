@@ -19,13 +19,13 @@ public class NodeCartClient {
 		root.insert(bNode);
 		root.insert(cNode);
 		root.insert(dNode);
-		root.insert(eNode);
+		root.insert(eNode);  
 		root.insert(fNode);
 		
-		
-		aNode.insert(aNode);
-		aNode.insert(new Node("A2",aNode.getSide()));
 		Node a1Node = new Node("A1", aNode.getSide());
+		aNode.insert(a1Node);
+		aNode.insert(new Node("A2",aNode.getSide()));
+		
 		a1Node.insert(new Node("AA1", aNode.getSide()));
 		a1Node.insert(new Node("AA2", aNode.getSide()));
 		a1Node.insert(new Node("AA3", aNode.getSide()));
